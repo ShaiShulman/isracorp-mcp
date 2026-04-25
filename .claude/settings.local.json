@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /c/Users/ShaiS/Documents/Repos -type f -name mcp.json -o -name *mcp*.py -o -name *mcp*.ts -o -name *mcp*.js)",
+      "Bash(find c:UsersShaiSDocumentsRepos -maxdepth 3 -type d -name *skill* -o -name *docx*)",
+      "Bash(find c:UsersShaiSDocumentsRepos -path *skills* -type f)",
+      "Bash(find c:UsersShaiSDocumentsRepos -path *mcp* -type f -name *.py -o -name *.json)",
+      "Bash(find c:UsersShaiSDocumentsRepos -maxdepth 3 -type f -name *mcp*)",
+      "Bash(find c:UsersShaiSDocumentsRepos -type f -name *docx* -o -name *doc*)",
+      "Bash(xargs grep:*)",
+      "Bash(find /c/Users/ShaiS/Documents/Repos -maxdepth 3 -name *.json -path */mcp*)",
+      "Edit(/.claude/skills/validate-companies/**)",
+      "Edit(/.claude/skills/validate-companies-docx/**)"
+    ]
+  }
+}

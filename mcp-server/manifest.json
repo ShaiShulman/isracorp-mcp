@@ -1,0 +1,34 @@
+{
+  "manifest_version": "0.2",
+  "name": "isracorp-mcp",
+  "display_name": "Israel Companies Registrar MCP",
+  "version": "1.0.0",
+  "description": "MCP server for the Israeli Companies Registrar (ICA)",
+  "author": {
+    "name": "Shai Shulman",
+    "email": "shaishulman@gmail.com",
+    "url": "https://www.linkedin.com/in/shai-shulman/"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "dist/server.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/dist/server.js"
+      ],
+      "env": {}
+    }
+  },
+  "tools": [
+    {
+      "name": "search_company",
+      "description": "Search the Companies Registrar by partial or full company name (Hebrew or English)."
+    },
+    {
+      "name": "get_company",
+      "description": "Look up a company by its 9-digit registration number"
+    }
+  ],
+  "license": "MIT"
+}
