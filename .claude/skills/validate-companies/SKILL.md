@@ -90,8 +90,8 @@ For each **confirmed match** with missing details, produce the completed citatio
 [שם בעברית], [ח.פ.|ח.צ.] [מספר], עם כתובת רשומה ב[כתובת]
 ```
 
-Example (private): `חברת מסחרית בע"מ, ח.פ. 51-123456-1, עם כתובת רשומה ברחוב ביאליק 46, תל אביב-יפו`
-Example (public): `חברה ציבורית בע"מ, ח.צ. 52-123456-1, עם כתובת רשומה ברחוב הרצל 12, תל אביב-יפו`
+Example (private): `חברת בע"מ, ח.פ. 51-123456-1, עם כתובת רשומה ברחוב ביאליק 46, תל אביב-יפו`
+Example (public): `חברה בע"מ, ח.צ. 52-123456-1, עם כתובת רשומה ברחוב הרצל 12, תל אביב-יפו`
 
 **Hebrew context — incorporation phrase** (when the original text uses `חברה המאוגדת בישראל` / `חברה הרשומה בישראל` / `שמשרדה הרשום ב`): preserve the original phrasing and insert the missing details inline:
 

@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 import * as cheerio from "cheerio";
 import { ICA_SEARCH_PAGE_URL, ICA_REQUIRED_HEADERS } from "../const/icaConstants";
 import { IcaCompany } from "../interfaces/interfaces";
-import { formatCompanyNumber } from "../data/companyUtils";
+import { normaliseCompanyNumber } from "../data/companyUtils";
 
 const TIMEOUT_MS = parseInt(process.env.ICA_REQUEST_TIMEOUT_MS ?? "10000", 10);
 
@@ -19,6 +19,7 @@ export async function scrapeByName(name: string): Promise<IcaCompany[]> {
 
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), TIMEOUT_MS);
+    timeout.unref();
 
     const res = await fetch(url, {
       headers: {
@@ -55,7 +56,7 @@ function parseSearchResults(html: string): IcaCompany[] {
   $(".corporation-result, .search-result-row, tr[data-id]").each((_, el) => {
     const row = $(el);
 
-    const companyNumber = formatCompanyNumber(
+    const companyNumber = normaliseCompanyNumber(
       row.find("[data-company-id], .company-id").text().trim() ||
       row.attr("data-id") ||
       ""

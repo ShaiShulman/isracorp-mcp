@@ -1,5 +1,5 @@
 import { IcaCompany, RawIcaCompany } from "../interfaces/interfaces";
-import { formatCompanyNumber } from "./companyUtils";
+import { normaliseCompanyNumber } from "./companyUtils";
 
 /**
  * Maps a raw ICA API response object to the normalised IcaCompany interface.
@@ -7,7 +7,7 @@ import { formatCompanyNumber } from "./companyUtils";
  */
 export function mapCompany(raw: RawIcaCompany): IcaCompany {
   return {
-    companyNumber: formatCompanyNumber(raw.DisplayId ?? ""),
+    companyNumber: normaliseCompanyNumber(raw.DisplayId ?? ""),
     hebrewName: raw.DisplayName ?? "",
     englishName: raw.DisplayEnglishName ?? "",
     status: raw.StatusString ?? "",

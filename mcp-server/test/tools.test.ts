@@ -29,6 +29,11 @@ const technoGel: IcaCompany = {
 
 beforeEach(() => {
   jest.clearAllMocks();
+  jest.spyOn(console, "error").mockImplementation(() => {});
+});
+
+afterEach(() => {
+  jest.restoreAllMocks();
 });
 
 // ── handleSearchCompany ───────────────────────────────────────────────────────

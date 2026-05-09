@@ -5,7 +5,7 @@ import * as path from "path";
 // This is the main access point for the MCP server for the Israeli Companies Registrar (ICA)
 // It exposes two tools: search_company and get_company
 // The search_company tool searches the ICA by partial or full company name (Hebrew or English)
-// The get_company tool looks up a company by its 9-digit registration number (ח.פ.)
+// The get_company tool looks up a company by its 9-digit registration number (ח.פ. or ח.צ.)
 //*
 
 // Load .env from mcp-server directory

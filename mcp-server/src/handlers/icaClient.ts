@@ -51,6 +51,7 @@ async function postWithRetry(body: string): Promise<RawIcaResponse> {
     try {
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), TIMEOUT_MS);
+      timeout.unref();
 
       const res = await fetch(ICA_API_URL, {
         method: "POST",

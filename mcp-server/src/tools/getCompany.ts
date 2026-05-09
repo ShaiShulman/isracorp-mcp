@@ -2,6 +2,7 @@ import { z } from "zod";
 import { validateCompanyNumber, normaliseCompanyNumber } from "../data/companyUtils";
 import { getByNumber } from "../handlers/icaClient";
 import { ApiError } from "../const/ApiError";
+import { LOOKUP_METHOD } from "../const/icaConstants";
 import { GetCompanyResult } from "../interfaces/interfaces";
 
 export const getCompanySchema = z.object({
@@ -28,6 +29,13 @@ export type GetCompanyInput = z.infer<typeof getCompanySchema>;
 export async function handleGetCompany(
   input: GetCompanyInput
 ): Promise<GetCompanyResult> {
+  if (LOOKUP_METHOD === "scraper") {
+    throw new ApiError(
+      'get_company requires the JSON API. Set ICA_LOOKUP_METHOD to "json" or "both".',
+      501
+    );
+  }
+
   const number = normaliseCompanyNumber(input.number);
 
   if (!validateCompanyNumber(number)) {

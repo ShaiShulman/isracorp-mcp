@@ -1,5 +1,14 @@
 // Israeli Companies Registrar ("רשם החברות") (ICA) endpoints and configuration
 
+// Lookup method: "json" = API only, "scraper" = scraper only, "both" = API with scraper fallback
+export type LookupMethod = "json" | "scraper" | "both";
+export const LOOKUP_METHOD: LookupMethod = (() => {
+  const v = (process.env.ICA_LOOKUP_METHOD ?? "both").toLowerCase();
+  if (v === "json" || v === "scraper" || v === "both") return v;
+  console.error(`[icaConstants] Unknown ICA_LOOKUP_METHOD "${v}", defaulting to "both"`);
+  return "both";
+})();
+
 export const ICA_API_URL =
   "https://ica.justice.gov.il/GenericCorporarionInfo/SearchGenericCorporation";
 
@@ -24,14 +33,15 @@ export const ICA_REQUIRED_HEADERS: Record<string, string> = {
 
 // Legal suffixes to strip from company names before searching.
 // Order matters: longer suffixes first to avoid partial stripping.
-export const LEGAL_SUFFIXES_HE = ['בע"מ', 'בע"מ', "בעמ", "בע״מ", "ב.מ."];
+// Longer/compound suffixes must come before their shorter components so they match first
+export const LEGAL_SUFFIXES_HE = ['בע"מ', 'בע"מ', "בעמ", "בע״מ", "ב.מ.", "חברה ציבורית", "חברת פרטית"];
 
 export const LEGAL_SUFFIXES_EN = [
   "Limited",
   "Ltd.",
   "Ltd",
-  "Inc.",
-  "Inc",
+  "B.M.",
+  "BM",
   "LLC",
   "LP",
   "LLP",
